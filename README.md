@@ -1,4 +1,5 @@
 # Project_1_OhSeungryeol
+중고거래 플랫폼을 착안하여 아이템을 등록하고, 댓글을 이용한 소통, 구매 제안과 구매 확정 기능을 제공하는 개인 백엔드 프로젝트입니다.
 ## ERD
 ![image](https://github.com/likelion-backend-5th/Project_1_OhSeungryeol/assets/82445894/9d5979d5-a791-4fdd-b198-5a28a7ead1b2)
 
