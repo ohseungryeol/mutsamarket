@@ -19,7 +19,7 @@
 
 ---
 ### ✅ SalesItem
-
+- 상품 관리 기능
 #### POST : 상품 등록 /items
 
 #### GET : 단일 상품 조회 /items/{itemId}
