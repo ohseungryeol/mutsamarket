@@ -78,21 +78,10 @@ public class NegotiationService {
             Page<NegotiationEntity> allSuggests= negotiationRepository.findAllByItemId(itemId,pageable);
             return allSuggests.map(NegotiationResponseDto::fromEntity);
         }
-        Page<NegotiationEntity> allSuggests= negotiationRepository.findAllByItemId(itemId,pageable);
+        Page<NegotiationEntity> allByItemIdAndUserId = negotiationRepository.findAllByItemIdAndUserId(itemId, user.getId(),pageable);
+        return allByItemIdAndUserId.map(NegotiationResponseDto::fromEntity);
 
 
-        for (NegotiationEntity negotiationEntity: allSuggests){
-            //제안 등록자가 현재 인증한 유저이면 자신의 모든 제안 조회
-            if(user.getId()==negotiationEntity.getUser().getId()){
-                Long ownerId = negotiationEntity.getId(); //현재 인증자의 구매 제안
-                //자신이 등록한 제안만 확인 가능
-                Page<NegotiationEntity> allmySuggests = negotiationRepository.findAllById(ownerId,pageable);
-                return allmySuggests.map(NegotiationResponseDto::fromEntity);
-            }
-        }
-
-        // 인증한 유저가 그 외 나머지 사람들은 조회 권한이 없다.
-        throw new CustomException(ErrorCode.INVALID_AUTH);
     }
 
 
